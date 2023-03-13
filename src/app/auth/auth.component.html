@@ -1,6 +1,6 @@
 <section class="auth">
-	<h1 class="auth__header--one">WebStar</h1>
-	<h2 class="auth__header--two">FrontEnd</h2>
+	<h1 class="auth__header auth__header--one">WebStar</h1>
+	<h2 class="auth__header auth__header--two">FrontEnd</h2>
 	<form class="auth__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
 		<div *ngIf="submitted && f.email.errors" class="notification__error">
 			<div *ngIf="f.email.errors.required">Email is required</div>
