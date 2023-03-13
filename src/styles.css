@@ -1,63 +1,73 @@
 @font-face {
-  font-family: 'Poppins-Regular';
-  src:  url('assets/Poppins-Regular.ttf') format('truetype');
+	font-family: "Poppins-Regular";
+	src: url("assets/Poppins-Regular.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Poppins-Bold';
-  src:  url('assets/Poppins-Bold.ttf') format('truetype');
+	font-family: "Poppins-Bold";
+	src: url("assets/Poppins-Bold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Poppins-Extra-Bold';
-  src:  url('assets/Poppins-ExtraBold.ttf') format('truetype');
+	font-family: "Poppins-Extra-Bold";
+	src: url("assets/Poppins-ExtraBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Poppins-Black';
-  src:  url('assets/Poppins-Black.ttf') format('truetype');
+	font-family: "Poppins-Black";
+	src: url("assets/Poppins-Black.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Poppins-Medium';
-  src:  url('assets/Poppins-Medium.ttf') format('truetype');
+	font-family: "Poppins-Medium";
+	src: url("assets/Poppins-Medium.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Star-Jedi';
-  src:  url('assets/Starjedi.ttf') format('truetype');
+	font-family: "Star-Jedi";
+	src: url("assets/Starjedi.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Distant-Galaxy';
-  src:  url('assets/SfDistantGalaxyAltoutline-e2Bp.ttf') format('truetype');
+	font-family: "Distant-Galaxy";
+	src: url("assets/SfDistantGalaxyAltoutline-e2Bp.ttf") format("truetype");
 }
 
-:root{
-  --black: #000000;
-  --dark-gray: #333333;
-  --gray: #8A8A8A;
-  --white: #ffffff;
-  --yellow: #F7B500;
-  --red: #FF3232;
-  --blue: #00D2FF;
-  --green: #2ECC71;
-  --font-xs: 14px;
-  --font-sm: 16px;
-  --font-md: 18px;
-  --font-lg: 20px;
-  --font-xl: 24px;
+:root {
+	--black: #000000;
+	--dark-gray: #333333;
+	--gray: #8a8a8a;
+	--white: #ffffff;
+	--yellow: #f7b500;
+	--red: #ff3232;
+	--blue: #00d2ff;
+	--green: #2ecc71;
+	--font-xs: 14px;
+	--font-sm: 16px;
+	--font-md: 18px;
+	--font-lg: 20px;
+	--font-xl: 24px;
 }
 
-html, body { 
-  height: 100%; 
+html,
+body {
+	height: 100%;
 }
 
-body { 
-  margin: 0; 
-  font-family: "Poppins-Regular", "Helvetica Neue", 'Star-Jedi', 'Distant-Galaxy', sans-serif; 
+body {
+	margin: 0;
+	font-family: "Poppins-Regular", "Helvetica Neue", sans-serif;
 }
 
-app-auth{
-  width: 100%;
+app-auth {
+	width: 100%;
+}
+
+.notification__error {
+	background-color: var(--red);
+	color: var(--white);
+	padding: 1em;
+	font-size: var(--font-sm);
+	font-weight: bold;
+	text-align: center;
 }
