@@ -7,11 +7,16 @@
 .auth__header--one{
   font-family: 'Star-Jedi';
   font-size: 30px;
+  text-align: center;
+  color: var(--white)
 }
 
-.auth__header--one{
+.auth__header--two{
   font-family: 'Distant-Galaxy';
-  font-size: 30px;
+  font-size: 70px;
+  text-align: center;
+  color: var(--white);
+  margin-top: 0;
 }
 
 .auth__form{
@@ -46,12 +51,13 @@
 }
 
 .auth__form__button{
-  width: 50%;
+  width: 33%;
   background-color: var(--yellow);
   border-color: var(--yellow);
   border-radius: 0.25em;
   padding: 1em 1.5em;
   font-weight: bold;
-  font-size: var(--font-sm)
+  font-size: var(--font-sm);
+  margin-top: 1em;
 }
 
