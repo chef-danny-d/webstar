@@ -1,21 +1,42 @@
-<style>
-  @import url('/assets/Poppins-Regular.ttf');
-</style>
 <section class="auth">
-  <h1 class="auth__header--one">WebStar</h1>
-  <h2 class="auth__header--two">FrontEnd</h2>
-  <form class="auth__form">
-    <label for="email" class="auth__form__label">
-      Felhasználónév
-      <input type="email" id="email" name="email" class="auth__form__input">
-    </label>
-    <label for="password" class="auth__form__label">
-      Jelszó
-      <input type="password" id="password" name="password" class="auth__form__input">
-    </label>
-    <button type="submit" class="auth__form__button">
-      Bejelentkezés
-    </button>
-  </form>
+	<h1 class="auth__header--one">WebStar</h1>
+	<h2 class="auth__header--two">FrontEnd</h2>
+	<form class="auth__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+		<div *ngIf="submitted && f.email.errors" class="notification__error">
+			<div *ngIf="f.email.errors.required">Email is required</div>
+			<div *ngIf="f.email.errors.email">
+				Email must be a valid email address
+			</div>
+		</div>
+		<div *ngIf="submitted && f.password.errors" class="notification__error">
+			<div *ngIf="f.password.errors.required">Password is required</div>
+		</div>
+		<div *ngIf="submitted && error" class="notification__error">
+			<div>{{ error.message }}</div>
+			<div>{{ error.cause }}</div>
+		</div>
+		<label for="email" class="auth__form__label">
+			Felhasználónév
+			<input
+				type="email"
+				id="email"
+				name="email"
+				class="auth__form__input"
+				formControlName="email"
+				[ngClass]="{ 'is-invalid': submitted && f.email.errors }"
+			/>
+		</label>
+		<label for="password" class="auth__form__label">
+			Jelszó
+			<input
+				type="password"
+				id="password"
+				name="password"
+				class="auth__form__input"
+				formControlName="password"
+				[ngClass]="{ 'is-invalid': submitted && f.password.errors }"
+			/>
+		</label>
+		<button type="submit" class="auth__form__button">Bejelentkezés</button>
+	</form>
 </section>
-
