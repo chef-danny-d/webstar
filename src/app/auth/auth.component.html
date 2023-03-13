@@ -23,7 +23,6 @@
 				name="email"
 				class="auth__form__input"
 				formControlName="email"
-				[ngClass]="{ 'is-invalid': submitted && f.email.errors }"
 			/>
 		</label>
 		<label for="password" class="auth__form__label">
@@ -34,7 +33,6 @@
 				name="password"
 				class="auth__form__input"
 				formControlName="password"
-				[ngClass]="{ 'is-invalid': submitted && f.password.errors }"
 			/>
 		</label>
 		<button type="submit" class="auth__form__button">Bejelentkezés</button>

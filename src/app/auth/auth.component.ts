@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-auth',
@@ -15,7 +16,8 @@ export class AuthComponent {
 		message: string;
 	} | null = null;
 	authenticated = false;
-	constructor(private formBuilder: FormBuilder) {}
+
+	constructor(private formBuilder: FormBuilder, private router: Router) {}
 	//Add user form actions
 	get f() {
 		return this.registerForm.controls;
@@ -49,6 +51,8 @@ export class AuthComponent {
 					console.log(data);
 					if (data.token) {
 						this.authenticated = true;
+						localStorage.setItem('token', data.token);
+						this.router.navigate(['/characters?index=0']);
 					} else {
 						throw new Error('Authentication failed');
 					}
