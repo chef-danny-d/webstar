@@ -1,42 +1,109 @@
-<section class="character">
-	<!-- character traits -->
-	<div class="character__details character__details--triats">
-		<span class="character__details__side">
-			{{ currentCharacter?.side }}
-		</span>
-	</div>
-	<!-- list of dots that allow character navigation -->
-	<ul class="character__list">
-		<!-- previous arrow -->
+<section class="character" *ngIf="currentCharacter">
+	<div class="character__top-bar">
+		<!-- character traits -->
+		<div class="character__details character__details--traits">
+			<!-- the side that the char belongs to -->
+			<span class="character__details--side">
+				<span class="character__details--side--box"></span>
+				<div>
+					<p class="character__details--power--header">Oldal</p>
+					<p class="character__details--side--value">
+						{{ currentCharacter.side.toLowerCase() }}
+					</p>
+				</div>
+			</span>
+			<!-- their special power -->
+			<span class="character__details--power">
+				<span class="character__details--power--box">
+					<img
+						class="character__details--power--box--img"
+						src="assets/star.png"
+						alt="force icon represented by a yellow star"
+					/>
+				</span>
+				<div>
+					<p class="character__details--power--header">Különleges Erő</p>
+					<p class="character__details--power--value">
+						{{ currentCharacter.force.power }}
+					</p>
+				</div>
+			</span>
+		</div>
+		<!-- list of dots that allow character navigation -->
+		<ul class="character__list">
+			<!-- circles list -->
+			<a
+				*ngFor="let character of chars"
+				[routerLink]="['/characters']"
+				[queryParams]="{ id: character.id }"
+				class="character__list__item character__list__item--circle"
+				[ngClass]="{
+					'character__list__item--active': character.id === currentCharacter.id
+				}"
+			>
+			</a>
 
-		<!-- circles list -->
-		<a
-			*ngFor="let character of data"
-			[routerLink]="['/characters']"
-			[queryParams]="{ id: character.id }"
-			class="character__list__item character__list__item--circle"
-		>
-		</a>
-		<!-- next arrow -->
-	</ul>
+			<!-- previous arrow -->
+			<img src="assets/arrow_circle.png" alt="" />
+			<!-- next arrow -->
+			<img src="assets/arrow_circle.png" alt="" />
+		</ul>
+	</div>
 
 	<!-- character details -->
 	<div class="character__details">
 		<div class="character__details__controls">
 			<h2
 				class="character__details__name"
-				[innerHTML]="currentCharacter?.name"
+				[innerHTML]="currentCharacter.name"
 			></h2>
 			<p class="character__details__description">
-				{{ currentCharacter?.description }}
+				{{ currentCharacter.description }}
 			</p>
+			<div class="character__details__cta">
+				<h1 class="character__details__cta--header">Modulok</h1>
+				<div>
+					<div class="character__details__cta--container">
+						<h2 class="character__details__cta--title">Szimuláció</h2>
+						<div class="character__details__cta--wrapper">
+							<p class="character__details__cta--text">
+								Válasz két karaktert ellentétes oldalakról
+							</p>
+							<div class="character__details__cta--wrapper--button">
+								<button class="character__details__cta--button">
+									Karakter kiválasztása
+								</button>
+								<button
+									class="character__details__cta--button character__details__cta--button-fill"
+								>
+									Küzdelem indítása
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="character__details__cta--container">
+						<h2 class="character__details__cta--title">CRUD kezelés</h2>
+						<div class="character__details__cta--wrapper">
+							<p class="character__details__cta--text">
+								Karakterszerkesztö megnyitása
+							</p>
+							<button class="character__details__cta--button">
+								Karakterek szerkesztése
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="character__details__image">
 			<img
 				class="character__details__image--img"
-				src="/assets/{{ currentCharacter?.id }}.png"
+				src="/assets/{{ currentCharacter.id }}.png"
 				alt="character image"
 			/>
+			<span class="character__details__image--circle"></span>
 		</div>
 	</div>
 </section>

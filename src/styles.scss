@@ -47,9 +47,9 @@
 	--font-md: 18px;
 	--font-lg: 20px;
 	--font-xl: 24px;
-  --border-radius: 0.25em
-  --sm-break-point: 800px
-  --md-break-point: 1200px
+	--border-radius: 0.25em;
+	--sm-break-point: 800px;
+	--md-break-point: 1200px;
 }
 
 html,
@@ -64,26 +64,26 @@ body {
 
 app-auth {
 	width: 100%;
-	background-image: url('/assets/bg_1.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	background-image: url("/assets/bg_1.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 app-character {
 	width: 100%;
 	height: 100vh;
-  background-image: url('/assets/bg_2.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	background-image: url("/assets/bg_2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .notification__error {
