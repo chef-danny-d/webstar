@@ -1,0 +1,21 @@
+<section class="characters">
+	<!-- character traits -->
+	<div></div>
+	<!-- list of dots that allow character navigation -->
+	<ul class="characters__list">
+		<!-- previous arrow -->
+
+		<!-- circles list -->
+		<a
+			*ngFor="let character of data; index as i"
+			[routerLink]="['/characters']"
+			[queryParams]="{ index: i }"
+			class="characters__list__item characters__list__item--circle"
+		>
+		</a>
+		<!-- next arrow -->
+	</ul>
+
+	<!-- character details -->
+	<div></div>
+</section>

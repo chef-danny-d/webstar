@@ -48,11 +48,14 @@ export class AuthComponent {
 			)
 				.then((response) => response.json())
 				.then((data) => {
-					console.log(data);
+					// if we have a token, we are authenticated and we can store the token in local storage
 					if (data.token) {
 						this.authenticated = true;
 						localStorage.setItem('token', data.token);
-						this.router.navigate(['/characters?index=0']);
+						// sending our user to the first page of the character list
+						this.router.navigate(['/characters'], {
+							queryParams: { index: 0 },
+						});
 					} else {
 						throw new Error('Authentication failed');
 					}

@@ -1,0 +1,26 @@
+.characters {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 20px;
+	box-sizing: border-box;
+	&__list {
+		display: flex;
+		flex-direction: row;
+		&__item {
+			content: " ";
+			cursor: pointer;
+			width: 1.5em;
+			height: 1.5em;
+			display: block;
+			border-radius: 100%;
+			background-color: var(--dark-gray);
+			&:hover {
+				background-color: var(--gray);
+			}
+		}
+	}
+}

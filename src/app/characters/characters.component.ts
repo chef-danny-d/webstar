@@ -3,12 +3,16 @@ import { Character } from './types';
 
 @Component({
 	selector: 'app-character',
-	templateUrl: './character.component.html',
-	styleUrls: ['./character.component.scss'],
+	templateUrl: './characters.component.html',
+	styleUrls: ['./characters.component.scss'],
 })
-export class CharacterComponent {
+export class CharactersComponent {
 	data: Character[] = [];
 	constructor() {}
+
+	getCharacterByIndex(index: number): Character {
+		return this.data[index];
+	}
 
 	ngOnInit(): void {
 		// fetch list of characters from the API using the token in local storage
