@@ -1,21 +1,42 @@
-<section class="characters">
+<section class="character">
 	<!-- character traits -->
-	<div></div>
+	<div class="character__details character__details--triats">
+		<span class="character__details__side">
+			{{ currentCharacter?.side }}
+		</span>
+	</div>
 	<!-- list of dots that allow character navigation -->
-	<ul class="characters__list">
+	<ul class="character__list">
 		<!-- previous arrow -->
 
 		<!-- circles list -->
 		<a
-			*ngFor="let character of data; index as i"
+			*ngFor="let character of data"
 			[routerLink]="['/characters']"
-			[queryParams]="{ index: i }"
-			class="characters__list__item characters__list__item--circle"
+			[queryParams]="{ id: character.id }"
+			class="character__list__item character__list__item--circle"
 		>
 		</a>
 		<!-- next arrow -->
 	</ul>
 
 	<!-- character details -->
-	<div></div>
+	<div class="character__details">
+		<div class="character__details__controls">
+			<h2
+				class="character__details__name"
+				[innerHTML]="currentCharacter?.name"
+			></h2>
+			<p class="character__details__description">
+				{{ currentCharacter?.description }}
+			</p>
+		</div>
+		<div class="character__details__image">
+			<img
+				class="character__details__image--img"
+				src="/assets/{{ currentCharacter?.id }}.png"
+				alt="character image"
+			/>
+		</div>
+	</div>
 </section>

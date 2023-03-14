@@ -1,13 +1,13 @@
-.characters {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	margin: 0 auto;
-	width: 100%;
-	padding: 0 20px;
-	box-sizing: border-box;
+.character {
 	&__list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin: 0 auto;
+		width: 100%;
+		padding: 0 20px;
+		box-sizing: border-box;
 		display: flex;
 		flex-direction: row;
 		&__item {
@@ -20,6 +20,20 @@
 			background-color: var(--dark-gray);
 			&:hover {
 				background-color: var(--gray);
+			}
+		}
+	}
+	&__details {
+		display: flex;
+		color: var(--white);
+		&__image {
+			width: 100%;
+			max-width: 300px;
+			margin: 0 auto;
+			display: block;
+			&--img {
+				width: 100%;
+				display: block;
 			}
 		}
 	}
