@@ -1,3 +1,5 @@
+import { AuthService } from './../services/auth.service';
+import { TokenService } from './../services/token.service';
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,20 +10,22 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 	authenticated = false;
-	constructor(private router: Router) {}
+	constructor(private router: Router, private tokenService: TokenService) {}
+	@Input() currentUser: any;
 
-	logOut(): void {
-		localStorage.removeItem('token');
-		this.authenticated = false;
+	public logout(): void {
+		this.tokenService.signOut();
 		this.router.navigate(['/']);
+		window.location.reload();
 	}
 
 	ngOnInit(): void {
-		if (!this.authenticated) {
-			const token = localStorage.getItem('token');
-			if (token) {
-				this.authenticated = true;
-			}
-		}
+		// if (!this.authenticated) {
+		// 	this.authenticated = this.tokenService.getToken() ? true : false;
+		// 	this.currentUser = this.tokenService.getUser();
+		// 	window.location.reload();
+		// }
+		this.authenticated = this.tokenService.getToken() ? true : false;
+		this.currentUser = this.tokenService.getUser();
 	}
 }

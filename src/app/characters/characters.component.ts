@@ -1,8 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { Character } from './types';
-import { ActivatedRoute } from '@angular/router';
-import { HeroService } from '../hero.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HeroService } from '../services/hero.service';
 import { Observable } from 'rxjs';
+import { TokenService } from '../services/token.service';
 
 @Component({
 	selector: 'app-character',
@@ -16,10 +17,13 @@ export class CharactersComponent {
 	}> = new Observable();
 	currentCharacter: Character | null = null;
 	chars: Character[] = [];
+	authenticated = false;
 
 	constructor(
 		private readonly route: ActivatedRoute,
-		private service: HeroService
+		private service: HeroService,
+		private router: Router,
+		private tokenService: TokenService
 	) {}
 
 	getCharacterByID(ID: string): Character | null {
@@ -31,6 +35,9 @@ export class CharactersComponent {
 	}
 
 	ngOnInit(): void {
+		if (!this.tokenService.getToken()) {
+			this.router.navigate(['/']);
+		}
 		// the returned data is a single object of arrays, so we need to destructure it to get the characters array
 		this.chars$ = this.service.getCharacters();
 		this.chars$.subscribe((data) => {

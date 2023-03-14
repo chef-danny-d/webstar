@@ -1,3 +1,5 @@
+import { TokenService } from './../services/token.service';
+import { AuthService } from './../services/auth.service';
 import { Component, Input, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,9 +18,21 @@ export class AuthComponent {
 		message: string;
 	} | null = null;
 	authenticated = false;
+	user = null;
 
-	constructor(private formBuilder: FormBuilder, private router: Router) {}
+	constructor(
+		private formBuilder: FormBuilder,
+		private router: Router,
+		private authService: AuthService,
+		private tokenService: TokenService
+	) {}
 	@Output() currentUser = null;
+
+	public logout(): void {
+		this.tokenService.signOut();
+		this.router.navigate(['/']);
+		window.location.reload();
+	}
 
 	//Add user form actions
 	get f() {
@@ -34,45 +48,38 @@ export class AuthComponent {
 		if (this.submitted) {
 			console.log(this.registerForm.value);
 
-			fetch(
-				'https://developer.webstar.hu/rest/frontend-felveteli/v2/authentication/',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						username: this.registerForm.value.email,
-						password: this.registerForm.value.password,
-					}),
-					headers: {
-						'Content-Type': 'application/json',
-						'Applicant-Id': 'MR8wyPTU',
-					},
-				}
-			)
-				.then((response) => response.json())
-				.then((data) => {
-					// if we have a token, we are authenticated and we can store the token in local storage
-					if (data.token) {
+			this.authService
+				.login(this.registerForm.value.email, this.registerForm.value.password)
+				.subscribe(
+					(data) => {
+						this.tokenService.saveToken(data.token);
+						this.tokenService.saveUser(data.user);
+
 						this.authenticated = true;
-						localStorage.setItem('token', data.token);
-						this.currentUser = data.user;
-						// sending our user to the first page of the character list
-						this.router.navigate(['/characters'], {
-							queryParams: { id: 'veder' },
-						});
-					} else {
-						throw new Error('Authentication failed');
+						this.error = null;
+						window.location.reload();
+					},
+					(err) => {
+						this.error = {
+							cause: 'Authentication failed',
+							message: err.error,
+						};
 					}
-				})
-				.catch((error) => {
-					console.log(error);
-					this.error = {
-						cause: 'Authentication failed',
-						message: error.error,
-					};
-				});
+				);
 		}
 	}
+	reloadPage(): void {
+		window.location.reload();
+	}
 	ngOnInit() {
+		// on load we check to see if there is already a user in the session
+		if (this.tokenService.getToken()) {
+			this.authenticated = true;
+			this.user = this.tokenService.getUser();
+			this.router.navigate(['/characters'], {
+				queryParams: { id: 'veder' },
+			});
+		}
 		//Add User form validations
 		this.registerForm = this.formBuilder.group({
 			email: ['', [Validators.required, Validators.email]],

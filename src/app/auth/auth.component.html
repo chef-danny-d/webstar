@@ -1,7 +1,12 @@
 <section class="auth">
 	<h1 class="auth__header auth__header--one">WebStar</h1>
 	<h2 class="auth__header auth__header--two">FrontEnd</h2>
-	<form class="auth__form" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+	<form
+		class="auth__form"
+		[formGroup]="registerForm"
+		(ngSubmit)="onSubmit()"
+		*ngIf="!authenticated"
+	>
 		<div *ngIf="submitted && f.email.errors" class="notification__error">
 			<div *ngIf="f.email.errors.required">Email is required</div>
 			<div *ngIf="f.email.errors.email">
@@ -37,4 +42,8 @@
 		</label>
 		<button type="submit" class="auth__form__button">Bejelentkezés</button>
 	</form>
+	<div class="auth__form" *ngIf="authenticated">
+		<h3 class="auth__form__header">Sikeres bejelentkezés</h3>
+		<button class="auth__form__button" (click)="logout()">Kijelentkezés</button>
+	</div>
 </section>

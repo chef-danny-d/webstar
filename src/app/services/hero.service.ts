@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Character } from './characters/types';
+import { Character } from '../characters/types';
+import { Observable } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root',
@@ -8,7 +9,7 @@ import { Character } from './characters/types';
 export class HeroService {
 	constructor(private http: HttpClient) {}
 
-	getCharacters() {
+	getCharacters(): Observable<any> {
 		return this.http.get<{ characters: Character[] }>(
 			'https://developer.webstar.hu/rest/frontend-felveteli/v2/characters/',
 			{
