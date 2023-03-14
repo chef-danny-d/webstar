@@ -36,7 +36,7 @@
 				*ngFor="let character of chars"
 				[routerLink]="['/characters']"
 				[queryParams]="{ id: character.id }"
-				class="character__list__item character__list__item--circle"
+				class="character__list__item"
 				[ngClass]="{
 					'character__list__item--active': character.id === currentCharacter.id
 				}"
@@ -44,9 +44,21 @@
 			</a>
 
 			<!-- previous arrow -->
-			<img src="assets/arrow_circle.png" alt="" />
-			<!-- next arrow -->
-			<img src="assets/arrow_circle.png" alt="" />
+			<div class="character__list__item--icon--wrapper">
+				<img
+					src="assets/arrow_circle.png"
+					class="character__list__item--icon"
+					alt=""
+					(click)="previousCharacter()"
+				/>
+				<!-- next arrow -->
+				<img
+					src="assets/arrow_circle.png"
+					class="character__list__item--icon character__list__item--icon-next"
+					alt=""
+					(click)="nextCharacter()"
+				/>
+			</div>
 		</ul>
 	</div>
 
@@ -100,8 +112,13 @@
 		<div class="character__details__image">
 			<img
 				class="character__details__image--img"
-				src="/assets/{{ currentCharacter.id }}.png"
 				alt="character image"
+				srcset="/assets/{{ currentCharacter.id }}.png 480w, /assets/{{ currentCharacter.id }}@2x.png 800w, /assets/{{ currentCharacter.id }}@3x.png 1200w"
+				sizes="(max-width: 600px) 480px,
+							(max-width: 1100px) 800px,
+							1200px
+							"
+				src="/assets/{{ currentCharacter.id }}.png"
 			/>
 			<span class="character__details__image--circle"></span>
 		</div>

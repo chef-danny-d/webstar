@@ -85,10 +85,12 @@ app-character {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+	padding-top: 80px;
 }
 
 app-navbar {
 	width: 100%;
+	position: absolute;
 }
 
 .notification__error {

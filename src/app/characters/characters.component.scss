@@ -13,7 +13,6 @@
 		flex-direction: row;
 		align-items: center;
 		gap: 0.5em;
-		padding: 0 20px;
 		box-sizing: border-box;
 		&__item {
 			content: " ";
@@ -28,6 +27,17 @@
 			&--active {
 				outline: var(--gray) solid 2px;
 				background-color: var(--white);
+			}
+			&--icon {
+				&--wrapper {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					gap: 1em;
+				}
+				&-next {
+					transform: rotate(180deg);
+				}
 			}
 			&:hover {
 				background-color: var(--gray);

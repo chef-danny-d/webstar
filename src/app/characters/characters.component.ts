@@ -34,6 +34,28 @@ export class CharactersComponent {
 		}
 	}
 
+	public nextCharacter(): void {
+		if (this.currentCharacter) {
+			const currentIndex = this.chars.indexOf(this.currentCharacter);
+			if (currentIndex === this.chars.length - 1) {
+				this.currentCharacter = this.chars[0];
+			} else {
+				this.currentCharacter = this.chars[currentIndex + 1];
+			}
+		}
+	}
+
+	public previousCharacter(): void {
+		if (this.currentCharacter) {
+			const currentIndex = this.chars.indexOf(this.currentCharacter);
+			if (currentIndex === 0) {
+				this.currentCharacter = this.chars[this.chars.length - 1];
+			} else {
+				this.currentCharacter = this.chars[currentIndex - 1];
+			}
+		}
+	}
+
 	ngOnInit(): void {
 		if (!this.tokenService.getToken()) {
 			this.router.navigate(['/']);
