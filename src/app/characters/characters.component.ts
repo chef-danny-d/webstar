@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Character } from './types';
 import { ActivatedRoute } from '@angular/router';
 import { HeroService } from '../hero.service';

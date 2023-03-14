@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -18,6 +18,8 @@ export class AuthComponent {
 	authenticated = false;
 
 	constructor(private formBuilder: FormBuilder, private router: Router) {}
+	@Output() currentUser = null;
+
 	//Add user form actions
 	get f() {
 		return this.registerForm.controls;
@@ -52,9 +54,10 @@ export class AuthComponent {
 					if (data.token) {
 						this.authenticated = true;
 						localStorage.setItem('token', data.token);
+						this.currentUser = data.user;
 						// sending our user to the first page of the character list
 						this.router.navigate(['/characters'], {
-							queryParams: { index: 0 },
+							queryParams: { id: 'veder' },
 						});
 					} else {
 						throw new Error('Authentication failed');

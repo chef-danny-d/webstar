@@ -84,6 +84,11 @@ app-character {
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	flex-direction: column;
+}
+
+app-navbar {
+	width: 100%;
 }
 
 .notification__error {
