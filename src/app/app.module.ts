@@ -7,9 +7,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthComponent } from './auth/auth.component';
 import { CharactersComponent } from './characters/characters.component';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NavbarComponent } from './navbar/navbar.component';
 @NgModule({
-	declarations: [AppComponent, AuthComponent, CharactersComponent],
+	declarations: [
+		AppComponent,
+		AuthComponent,
+		CharactersComponent,
+		NavbarComponent,
+	],
 	imports: [
 		HttpClientModule,
 		BrowserModule,

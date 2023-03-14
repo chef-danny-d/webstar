@@ -1,0 +1,14 @@
+<nav class="nav">
+	<div class="nav__left nav__container">
+		<img class="nav__container--icon" src="/assets/user.png" alt="" />
+		<span class="nav__container--text">
+			{{ authenticated }}
+		</span>
+	</div>
+	<div class="nav__right">
+		<a class="nav__container" (click)="logOut()">
+			<span class="nav__container--text">Úrhajó elhagyása</span>
+			<img src="/assets/logout.png" alt="" class="nav__container--icon" />
+		</a>
+	</div>
+</nav>
