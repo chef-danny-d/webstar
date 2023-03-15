@@ -40,6 +40,7 @@
 				[ngClass]="{
 					'character__list__item--active': character.id === currentCharacter.id
 				}"
+				[attr.aria-label]="'link to ' + character.id"
 			>
 			</a>
 
@@ -110,16 +111,38 @@
 			</div>
 		</div>
 		<div class="character__details__image">
-			<img
+			<picture>
+				<source
+					class="character__details__image--img"
+					media="(max-width: 799px)"
+					srcset="/assets/{{ currentCharacter.id }}.png"
+				/>
+				<source
+					class="character__details__image--img"
+					media="(min-width: 800px) and (max-width: 1099px)"
+					srcset="/assets/{{ currentCharacter.id }}@2x.png"
+				/>
+				<source
+					class="character__details__image--img"
+					media="(min-width: 1100px)"
+					srcset="/assets/{{ currentCharacter.id }}@3x.png"
+				/>
+				<img
+					class="character__details__image--img"
+					src="/assets/{{ currentCharacter.id }}.png"
+					alt="Chris standing up holding his daughter Elva"
+				/>
+			</picture>
+			<!-- <img
 				class="character__details__image--img"
 				alt="character image"
 				srcset="/assets/{{ currentCharacter.id }}.png 480w, /assets/{{ currentCharacter.id }}@2x.png 800w, /assets/{{ currentCharacter.id }}@3x.png 1200w"
-				sizes="(max-width: 600px) 480px,
-							(max-width: 1100px) 800px,
+				sizes="480px,
+							(max-width: 700px) 800px,
 							1200px
 							"
 				src="/assets/{{ currentCharacter.id }}.png"
-			/>
+			/> -->
 			<span class="character__details__image--circle"></span>
 		</div>
 	</div>
