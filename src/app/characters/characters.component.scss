@@ -79,7 +79,7 @@
 			flex: 1;
 		}
 		&__name {
-			font-family: "Star-Jedi";
+      font-family: "Star-Jedi", serif;
 			font-size: 90px;
 			line-height: 90px;
 			word-break: break-all;
@@ -89,7 +89,7 @@
 			width: 100%;
 			max-width: 600px;
 			text-align: left;
-			font-family: "Poppins-Regular";
+      font-family: "Poppins-Regular", serif;
 		}
 		&--traits {
 			display: flex;
@@ -122,12 +122,12 @@
 				margin: 0;
 				text-transform: uppercase;
 				color: var(--yellow);
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 16px;
 			}
 			&--value {
 				margin: 0;
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 20px;
 			}
 		}
@@ -147,13 +147,13 @@
 				margin: 0;
 				text-transform: uppercase;
 				color: var(--yellow);
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 16px;
 			}
 			&--value {
 				margin: 0;
 				text-transform: capitalize;
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 20px;
 			}
 		}
@@ -177,17 +177,17 @@
 				}
 			}
 			&--header {
-				font-family: "Poppins-Black";
+        font-family: "Poppins-Black", serif;
 				font-size: 24px;
 			}
 			&--title {
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 18px;
 				align-self: self-start;
 				flex: 1;
 			}
 			&--text {
-				font-family: "Poppins-Regular";
+        font-family: "Poppins-Regular", serif;
 				font-size: 16px;
 				text-align: left;
 			}
@@ -197,7 +197,7 @@
 				border: 2px var(--yellow) solid;
 				background-color: transparent;
 				color: var(--white);
-				font-family: "Poppins-Bold";
+        font-family: "Poppins-Bold", serif;
 				font-size: 16px;
 				&-fill {
 					background-color: var(--yellow);
