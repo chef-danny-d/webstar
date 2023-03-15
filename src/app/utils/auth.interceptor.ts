@@ -1,4 +1,4 @@
-import { TokenService } from './../services/token.service';
+import { TokenService } from "../services/token.service";
 import { Injectable } from '@angular/core';
 import {
 	HttpRequest,
@@ -18,6 +18,7 @@ export class AuthInterceptor implements HttpInterceptor {
 		request: HttpRequest<unknown>,
 		next: HttpHandler
 	): Observable<HttpEvent<unknown>> {
+    // Clone the request to add the new header with the token to authenticate the request
 		let authReq = request;
 		const token = this.token.getToken();
 		if (token != null) {

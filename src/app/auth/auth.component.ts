@@ -34,10 +34,20 @@ export class AuthComponent {
 		window.location.reload();
 	}
 
-	//Add user form actions
+  /**
+   * Creating a getter function for the form fields that returns an object with all the values of the form fields
+   */
 	get f() {
 		return this.registerForm.controls;
 	}
+
+  /**
+   * Initialize the form submission process
+   * If the form is invalid, we stop here
+   * If the form is valid, we call the login method from the AuthService
+   * If the login is successful, we save the token and user data in the session storage
+   * If the login is unsuccessful, we display an error message
+   */
 	onSubmit() {
 		this.submitted = true;
 		// stop here if form is invalid
@@ -46,8 +56,6 @@ export class AuthComponent {
 		}
 		//True if all the fields are filled
 		if (this.submitted) {
-			console.log(this.registerForm.value);
-
 			this.authService
 				.login(this.registerForm.value.email, this.registerForm.value.password)
 				.subscribe(
@@ -57,7 +65,7 @@ export class AuthComponent {
 
 						this.authenticated = true;
 						this.error = null;
-						window.location.reload();
+						this.reloadPage()
 					},
 					(err) => {
 						this.error = {
@@ -72,7 +80,8 @@ export class AuthComponent {
 		window.location.reload();
 	}
 	ngOnInit() {
-		// on load we check to see if there is already a user in the session
+		// on-load we check to see if there is already a user in the session
+    // if there is, we redirect to the characters page with the id of the first character
 		if (this.tokenService.getToken()) {
 			this.authenticated = true;
 			this.user = this.tokenService.getUser();
@@ -80,7 +89,7 @@ export class AuthComponent {
 				queryParams: { id: 'veder' },
 			});
 		}
-		//Add User form validations
+		//Add the form fields and their validators
 		this.registerForm = this.formBuilder.group({
 			email: ['', [Validators.required, Validators.email]],
 			password: ['', [Validators.required]],
